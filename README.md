@@ -1,4 +1,3 @@
-
 # makeYOLOv3
 
 ## Introduction
@@ -20,36 +19,50 @@ In the [train.py](https://github.com/dawnknight/makeYOLOv3/blob/master/train.py 
 * **Start training**: The checkpoints will save in "path_to_cfgFolder/weights/." 
 ### Some details in [train.py](https://github.com/dawnknight/makeYOLOv3/blob/master/train.py "train.py")
 
-* directory of voc format labels (.xml)
+* Directory of voc format labels (.xml)
 ```
 xmlFolder = "/media/sf_ShareFolder/tomato_A/labels"
 ```
-* images directory
+* Images directory
 ```
 imgFolder = "/media/sf_ShareFolder/tomato_A/images"
 ```
-* directory of training set
+* Directory of training set
 ```
 saveYoloPath = "/media/sf_ShareFolder/tomato_A/yolo"
  ```
-* class list of your dataset. ie: "classList = {"car": 0, "bus": 1, "airplane": 2}"
+* Class list of your dataset. ie: "classList = {"car": 0, "bus": 1, "airplane": 2}"
 ```
 classList = { "0_tomato_flower":0, "1_tomato_young": 1 }
 ```
-* how many portion of the dataset will be separated as test dataset
+* Type of the yolo model, you want to train. Choose between yolov3 and yolov3-tiny.
+```
+modelYOLO = “yolov3-tiny"
+```
+* How many portion of the dataset will be separated as test dataset
 ```
 testRatio = 0.2
 ```
-* configure setting
+* Configure setting
 ```
 cfgFolder = "cfg.tomato_A"
 cfg_obj_names = "obj.names"
 cfg_obj_data = "obj.data"
 ```
-* path to darknet folder
+* Path to darknet folder
 ```
 darknetEcec = "../darknet/darknet"
 ```
+* If you want to use GPU, you can add ``` "-gpus 0,1,2,3" ``` at the end of line 220.
+```
+executeCmd = darknetEcec +  " detector train "  + cfgFolder + folderCharacter + "obj.data "  + cfgFolder + folderCharacter + fileCFG +  " darknet53.conv.74"  + " -gpus 0,1,2,3"
+```
+* (Ubuntu) If you want to save the training logs, you can add  ```"| tee path_to_logfile" ```
+```
+executeCmd = darknetEcec + " detector train " + cfgFolder + folderCharacter + "obj.data " + cfgFolder + folderCharacter + fileCFG + " darknet53.conv.74"+" -gpus 0,1,2,3 | tee trainlog.txt"
+```
+
+
 ## Traing 
 ```
 python train.py
@@ -65,3 +78,20 @@ ie. python playYOLO.py -i test.jpg
 python playYOLO.py -v video_name.file_extension
 ie. python playYOLO.py -v test.mp4
 ```
+### Some details in [playYOLO.py](https://github.com/dawnknight/makeYOLOv3/blob/master/playYOLO.py "playYOLO.py")
+
+* Model type - related to *modelYOLO* in  [train.py](https://github.com/dawnknight/makeYOLOv3/blob/master/train.py "train.py")
+```
+modelType = “yolo"
+```
+* *cfg_obj_names* in [train.py](https://github.com/dawnknight/makeYOLOv3/blob/master/train.py "train.py"), which include the classes in the training dataset.
+```
+classesFile = “../darknet/data/voc.names"
+```
+* Path to configure file - yolov3.cfg or yolov3-tiny.cfg in *cfgFolder*
+```
+modelConfiguration = “../*cfgFolder*/yolov3.cfg"
+```
+* Path to  the trained weights - should in /*cfgFolder*/weights/
+```
+modelWeights = “../*cfgFolder*/weights/yolov3.weights"
