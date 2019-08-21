@@ -1,3 +1,4 @@
+
 # makeYOLOv3
 
 ## Introduction
@@ -18,27 +19,49 @@ In the [train.py](https://github.com/dawnknight/makeYOLOv3/blob/master/train.py 
 * **Pre-training process**:  Download the pre-trained yolo model [darknet53.conv.74](https://pjreddie.com/media/files/darknet53.conv.74), and according to *modelYOLO* and other attributes modify yolov3-tiny.cfg or yolov3.cfg.
 * **Start training**: The checkpoints will save in "path_to_cfgFolder/weights/." 
 ### Some details in [train.py](https://github.com/dawnknight/makeYOLOv3/blob/master/train.py "train.py")
+
+* directory of voc format labels (.xml)
 ```
-folderCharacter = "/" # \\ is for windows
-# directory of voc format labels (.xml)
 xmlFolder = "/media/sf_ShareFolder/tomato_A/labels"
-# images directory
+```
+* images directory
+```
 imgFolder = "/media/sf_ShareFolder/tomato_A/images"
-# directory of training set
+```
+* directory of training set
+```
 saveYoloPath = "/media/sf_ShareFolder/tomato_A/yolo"
-# class list of your dataset
-# ie: "classList = {"car": 0, "bus": 1, "airplane": 2}"
+ ```
+* class list of your dataset. ie: "classList = {"car": 0, "bus": 1, "airplane": 2}"
+```
 classList = { "0_tomato_flower":0, "1_tomato_young": 1 }
-modelYOLO = "yolov3-tiny" #yolov3 or yolov3-tiny
-# how many portion of the dataset will be separated as test dataset
+```
+* how many portion of the dataset will be separated as test dataset
+```
 testRatio = 0.2
-# configure setting
+```
+* configure setting
+```
 cfgFolder = "cfg.tomato_A"
 cfg_obj_names = "obj.names"
 cfg_obj_data = "obj.data"
-#
-numBatch = 24
-numSubdivision = 8
-# path to darknet folder
+```
+* path to darknet folder
+```
 darknetEcec = "../darknet/darknet"
+```
+## Traing 
+```
+python train.py
+```
+## Testing
+* Single image detection
+```
+python playYOLO.py -i image_name.file_extension
+ie. python playYOLO.py -i test.jpg
+```
+* Video detection
+```
+python playYOLO.py -v video_name.file_extension
+ie. python playYOLO.py -v test.mp4
 ```
