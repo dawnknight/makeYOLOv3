@@ -4,8 +4,8 @@
 This is a translation of the details summary of the the [blog](https://tinyurl.com/y7juz9fp), about how to training the yolov3 with your own dataset.
 Thanks for the author's ([ch-tseng](https://github.com/ch-tseng/makeYOLOv3)) awesome work.
 ## Requirements
-* OpenCV - [How to install opencv?]([https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/](https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/)) 
-* Darknet - [Darknet official site]([https://pjreddie.com/darknet/yolo/](https://pjreddie.com/darknet/yolo/))
+* OpenCV - [How to install opencv?](https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/)
+* Darknet - [Darknet official site](https://pjreddie.com/darknet/yolo/)
 ## Training with your own dataset
 [train.py](https://github.com/dawnknight/makeYOLOv3/blob/master/train.py "train.py") is the combination script of [1_labels_to_yolo_format.py](https://github.com/dawnknight/makeYOLOv3/blob/master/1_labels_to_yolo_format.py "1_labels_to_yolo_format.py"), [2_split_train_test.py](https://github.com/dawnknight/makeYOLOv3/blob/master/2_split_train_test.py "2_split_train_test.py"), [3_make_cfg_file.py](https://github.com/dawnknight/makeYOLOv3/blob/master/3_make_cfg_file.py "3_make_cfg_file.py") and [4_train_yolo.py](https://github.com/dawnknight/makeYOLOv3/blob/master/4_train_yolo.py "4_train_yolo.py").
 
