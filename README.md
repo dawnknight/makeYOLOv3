@@ -90,8 +90,8 @@ classesFile = “../darknet/data/voc.names"
 ```
 * Path to configure file - yolov3.cfg or yolov3-tiny.cfg in *cfgFolder*
 ```
-modelConfiguration = “../*cfgFolder*/yolov3.cfg"
+modelConfiguration = “../cfgFolder/yolov3.cfg"
 ```
 * Path to  the trained weights - should in /*cfgFolder*/weights/
 ```
-modelWeights = “../*cfgFolder*/weights/yolov3.weights"
+modelWeights = “../cfgFolder/weights/yolov3.weights"
